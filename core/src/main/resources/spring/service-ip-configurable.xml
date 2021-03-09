@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <bean id="idService" class="com.github.bjlhx15.id.generator.service.impl.IdServiceImpl"
+          init-method="init">
+        <property name="machineIdProvider" ref="ipConfigurableMachineIdProvider"/>
+    </bean>
+
+    <bean id="ipConfigurableMachineIdProvider"
+          class="com.github.bjlhx15.id.generator.service.impl.provider.impl.IpConfigurableMachineIdProvider" init-method="init">
+        <property name="ips" value="${vesta.ips}"/>
+    </bean>
+
+</beans>
